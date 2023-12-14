@@ -1,0 +1,6 @@
+{
+  "project_name": "Template Python Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "author": "Anonymous",
+  "python_version": "3.12.1"
+}

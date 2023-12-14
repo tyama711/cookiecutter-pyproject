@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = "{{ cookiecutter.project_name }}"
+authors = ["Takuya Yamasaki <takuyaya@yahoo-corp.jp>"]
+readme = "README.md"
+packages = [{include = "{{ cookiecutter.project_slug }}"}]
+
+[tool.poetry.dependencies]
+python = "^{{ cookiecutter.python_version }}"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.6.0"
+tox = "^4.11.4"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+select = ["W", "E", "F", "B", "C", "I"]
+ignore = ["E501"]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py312
+
+[testenv:py312]
+deps =
+    pyright>=1,<2
+    pytest>=7,<8
+commands =
+    pyright
+    pytest tests/ {posargs}
+"""
